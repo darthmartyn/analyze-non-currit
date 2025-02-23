@@ -1,0 +1,9 @@
+val rules = @{
+  Goto_Statements,
+  Maximum_Lines: {N: 15},
+  Maximum_Subprogram_Lines: {N: 5},
+  Use_Package_Clauses,
+  Min_Identifier_Length: {N: 5},
+  Max_Identifier_Length: {N: 30},
+  Numeric_Literals: {Statements_Only:true, All:false}
+}

@@ -1,0 +1,45 @@
+project SAS is
+
+   Component_Name := "engines";
+
+   Source_Directory := Project'Project_Dir & "/src";
+   Working_Directory := Project'Project_Dir & "/obj";
+   Reports_Directory := Project'Project_Dir & "/verification/gnatsas/report_output";
+   Reviews_Directory := Project'Project_Dir & "/verification/gnatsas/analyze_output";
+   
+   for Languages use ("Ada");
+   For Target use "gnatsas";
+   for Source_Dirs use (Source_Directory);
+   for Object_Dir use Working_Directory;
+
+   package Metrics is
+      for Default_Switches ("Ada") use
+        ("--lines-code",
+         "--short-file-names",
+         "--generate-xml-output",
+         "--generate-xml-schema",
+         "--xml-file-name=" & Reports_Directory & "/" & Component_Name & "-sloc.xml",
+         "--no-text-output");
+   end Metrics;
+
+   package Check is
+      for Default_Switches ("Ada") use ("--check-semantic");
+      for Rule_File use "coding.standard";
+   end Check;
+
+   package Analyzer is
+      for Output_Dir use Reviews_Directory;
+      for Switches ("Report CSV") use
+         ("--out="  & Reports_Directory & "/" & Component_Name & ".csv");
+
+      for Switches ("Report SARIF") use
+         ("--out=" & Reports_Directory & "/" & Component_Name &  ".sarif");
+      
+      for Switches ("Report GNATHUB") use
+         ("--out=" & Reports_Directory & "/" & Component_Name &  ".gnathub");
+      
+      for Switches ("Report Security") use
+         ("--out=" & Reports_Directory & "/" & Component_Name &  "-security.html", "--show-mitigated-cwes");
+   end Analyzer;
+   
+end SAS;

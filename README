@@ -1,0 +1,22 @@
+The application source code is held in the 'src' directory and there is a workflows Makefile called Makefile.sas
+
+Static Verification - Makefile.sas
+----------------------------------
+make -f Makefile.sas sloc
+    => Produces a SLOC count for the engines component in verification/gnatsas/report_output/engines-sloc.xml
+    => Also produces verification/gnatsas/report_output/engines-sloc.xsd (XML Scheme).
+
+make -f Makefile.sas standards
+    => Runs gnatcheck independently and provides a console output, compiler message style.
+    => Useful for the developer to run on their desktop or as a commit hook.
+
+make -f Makefile.sas desktop
+    => Run all analysis engines in Speed mode and output message on the console, compiler message style.
+    => Useful for the developer to run on their desktop.
+
+make -f Makefile.sas server
+    => A more comprehensive analysis for depth, resulting in various reports being written.
+    => verification/gnatsas/report_output contains SARIF, CSV, GNAThub and Security Reportin HTML
+
+For both 'desktop' and 'server' workflows, verification/gnat_sas/analyze_output contains the SAM and SAR files, 
+these can be added to a CMS, from which to rebuild the reports or the reports can be added to CMS too.
