@@ -10,7 +10,7 @@ if ($action -eq "setup") {
     if (-not (Test-Path $analysisdir)) {New-Item -Path $analysisdir -Force -ItemType Directory | Out-Null}
 } elseif ($action -eq "clean") {
     Get-ChildItem -Include obj -Recurse | Remove-Item -Recurse
-} elseif ($action -eq "metrics") {
+} elseif ($action -eq "sloc") {
     Start-Process gnatmetric -ArgumentList "$($proj)" -NoNewWindow -Wait
 } elseif ($action -eq "standards") {
     Start-Process gnatcheck -ArgumentList "$($proj)" -NoNewWindow -Wait
