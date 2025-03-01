@@ -1,4 +1,4 @@
-project SAS is
+project GNATSAS is
 
    Component_Name := "engines";
 
@@ -42,4 +42,4 @@ project SAS is
          ("--out=" & Reports_Directory & "/" & Component_Name &  "-security.html", "--show-mitigated-cwes");
    end Analyzer;
    
-end SAS;
+end GNATSAS;
