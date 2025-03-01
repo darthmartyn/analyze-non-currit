@@ -1,7 +1,7 @@
 The application source code is held in the 'src' directory and there is a workflows Makefile
 
-Static Verification - Makefile.sas
-----------------------------------
+GNAT Static Analysis Suite Kickstart Workflow
+---------------------------------------------
 make sloc
     => Produces a SLOC count for the engines component in verification/gnatsas/report_output/engines-sloc.xml
     => Also produces verification/gnatsas/report_output/engines-sloc.xsd (XML Scheme).
