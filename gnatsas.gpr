@@ -8,7 +8,7 @@ project GNATSAS is
    Reviews_Directory := Project'Project_Dir & "/verification/gnatsas/analyze_output";
    
    for Languages use ("Ada");
-   For Target use "gnatsas";
+   for Target use "gnatsas";
    for Source_Dirs use (Source_Directory);
    for Object_Dir use Working_Directory;
 
